@@ -15,7 +15,7 @@ Vector::Vector(int n, int* data)
     }
 }
 
-Vector::Vector(const Vector& other) //Конструктор копирования
+Vector::Vector(const Vector& other) //ГЉГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЄГ®ГЇГЁГ°Г®ГўГ Г­ГЁГї
 {
     this->n = other.n;
     delete[] this->data;
@@ -25,7 +25,7 @@ Vector::Vector(const Vector& other) //Конструктор копирования
     }
 }
 
-Vector::Vector(Vector&& other)  //Конструктор перемещения
+Vector::Vector(Vector&& other)  //ГЉГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЇГҐГ°ГҐГ¬ГҐГ№ГҐГ­ГЁГї
 {
     this->n = other.n;
     this->data = other.data;
@@ -33,7 +33,7 @@ Vector::Vector(Vector&& other)  //Конструктор перемещения
     other.n = 0;
 }
 
-Vector& Vector::operator=(const Vector& other)  //Присваивание с копированием
+Vector& Vector::operator=(const Vector& other)  //ГЏГ°ГЁГ±ГўГ ГЁГўГ Г­ГЁГҐ Г± ГЄГ®ГЇГЁГ°Г®ГўГ Г­ГЁГҐГ¬
 {
     if (&other == this) return *this;
     if (other.n != this->n) {
@@ -51,7 +51,7 @@ Vector& Vector::operator=(const Vector& other)  //Присваивание с копированием
     return *this;
 }
 
-Vector& Vector::operator=(Vector&& other) //Присваивание с перемещением
+Vector& Vector::operator=(Vector&& other) //ГЏГ°ГЁГ±ГўГ ГЁГўГ Г­ГЁГҐ Г± ГЇГҐГ°ГҐГ¬ГҐГ№ГҐГ­ГЁГҐГ¬
 {
     if (&other == this) return *this;
     delete[] this->data;
@@ -123,5 +123,6 @@ Vector& operator^(int* array, Vector& vec)
         V_data[j] = (array[j] ^ vec[j]);
     }
     Vector *V = new Vector(n, V_data);
+    delete[] V_data;
     return *V;
 }
